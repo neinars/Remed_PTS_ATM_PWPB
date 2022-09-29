@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
             $table->integer('nominal');
+            $table->integer('token')->nullable();
             $table->timestamps();
         });
     }
